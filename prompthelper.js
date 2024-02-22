@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         ChatGPT 框架助手
 // @namespace    http://tampermonkey.net/
-// @version      1.0.202402222156
+// @version      1.0.202402232156
 // @description  在ChatGPT页面侧边显示框架助手
 // @author       iaiuse.com
 // @match        https://chat.openai.com/*
@@ -10,7 +10,6 @@
 // @grant        GM_addStyle
 // @grant        GM_getResourceText
 // @require      https://code.jquery.com/jquery-3.7.1.min.js
-// ==/UserScript==
 
 (function() {
     'use strict';
@@ -98,12 +97,12 @@
     // 创建侧边栏元素
     const frameHelper = document.createElement('div');
     frameHelper.id = 'frameHelper';
-    frameHelper.className = 'bg-gray-100 text-gray-800 p-4 rounded-lg shadow transition-all ease-in-out duration-500 cursor-pointer hover:bg-gray-200';
+    frameHelper.className = 'bg-gray-100 text-gray-800 p-1 rounded-lg shadow transition-all ease-in-out duration-500 cursor-pointer hover:bg-gray-200';
     document.body.appendChild(frameHelper);
 
     // 创建顶部容器，用于放置select和图标
     const topContainer = document.createElement('div');
-    topContainer.className = 'top-container flex justify-between items-center mb-4'; //'frame-content flex justify-between items-center mb-4 p-2 bg-white rounded-lg shadow';
+    topContainer.className = 'top-container flex justify-between items-center mb-1'; //'frame-content flex justify-between items-center mb-4 p-2 bg-white rounded-lg shadow';
     frameHelper.appendChild(topContainer);
 
     // 创建并配置select容器
@@ -122,7 +121,7 @@
 
     // 创建并配置图标容器
     const iconContainer = document.createElement('div');
-    iconContainer.className = 'icon-container flex-shrink-0 ml-4 arrow';
+    iconContainer.className = 'icon-container flex-shrink-0 ml-1 arrow';
     iconContainer.addEventListener('click', function() {
         // 切换侧边栏大小的逻辑
         const frameHelper = document.getElementById('frameHelper');
@@ -143,7 +142,7 @@
 
     // 动态内容区域
     const dynamicContentDiv = document.createElement('div');
-    dynamicContentDiv.className = 'dynamic-content p-4';
+    dynamicContentDiv.className = 'dynamic-content p-1';
     frameHelper.appendChild(dynamicContentDiv);
 
     // 加载框架数据
@@ -171,11 +170,11 @@
         // 遍历fields创建输入框
         Object.entries(frameworkData.fields).forEach(([fieldName, field]) => {
             const fieldLabel = document.createElement('label');
-            fieldLabel.className = 'block text-gray-700 text-sm font-bold mb-2';
+            fieldLabel.className = 'block text-gray-700 text-sm font-bold mb-1';
 
             fieldLabel.textContent = fieldName + ": ";
             const textarea = document.createElement('textarea');
-            textarea.className = 'w-full p-2 border border-gray-300 rounded-md'; // Tailwind类
+            textarea.className = 'w-full p-1 border border-gray-300 rounded-md'; // Tailwind类
             textarea.setAttribute('placeholder', field.text);
             textarea.setAttribute('name', fieldName);
 
@@ -230,3 +229,4 @@
         //this.innerText = '框架助手';
     });
 })();
+
