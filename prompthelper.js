@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         ChatGPT 框架助手
 // @namespace    http://tampermonkey.net/
-// @version      0.9
+// @version      1.0.202402222156
 // @description  在ChatGPT页面侧边显示框架助手
 // @author       iaiuse.com
 // @match        https://chat.openai.com/*
@@ -58,6 +58,41 @@
         #frameHelper.expanded .dynamic-content {
             display: block;
         }
+        .top-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+        }
+
+        .select-container, .icon-container {
+            padding: 5px;
+        }
+
+        .icon-container i {
+            cursor: pointer;
+        }
+        .arrow{
+              position: relative;
+              display: inline-block;
+              padding-left: 20px;
+            }
+
+            .arrow::before{
+              content: '';
+              width: 6px;
+              height: 6px;
+              border: 0px;
+              border-top: solid 2px #5bc0de;
+              border-right: solid 2px #5bc0de;
+              -ms-transform: rotate(45deg);
+              -webkit-transform: rotate(45deg);
+              transform: rotate(45deg);
+              position: absolute;
+              top: 50%;
+              left: 0;
+              margin-top: -4px;
+            }
     `);
 
     // 创建侧边栏元素
@@ -67,33 +102,44 @@
     document.body.appendChild(frameHelper);
 
     // 创建顶部容器，用于放置select和图标
-    const fixedContentDiv = document.createElement('div');
-    fixedContentDiv.className =  'frame-content flex justify-between items-center mb-4'; //'frame-content flex justify-between items-center mb-4 p-2 bg-white rounded-lg shadow';
-    frameHelper.appendChild(fixedContentDiv);
+    const topContainer = document.createElement('div');
+    topContainer.className = 'top-container flex justify-between items-center mb-4'; //'frame-content flex justify-between items-center mb-4 p-2 bg-white rounded-lg shadow';
+    frameHelper.appendChild(topContainer);
 
+    // 创建并配置select容器
+    const selectContainer = document.createElement('div');
+    selectContainer.className = 'select-container';
     // 创建select元素
     const selectElement = document.createElement('select');
-    selectElement.className = 'block appearance-none bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline';
+    selectElement.className = 'flex-grow';
     // 添加选项到select...
     selectElement.addEventListener('change', function() {
         if('-请选择-' == this.value )
-            return;
+            return false;
         loadFrameworkData(this.value);
     });
-    fixedContentDiv.appendChild(selectElement);
+    selectContainer.appendChild(selectElement);
 
-    // 创建缩放图标
-    // 使用Font Awesome图标
-    const shrinkIcon = document.createElement('i');
-    shrinkIcon.className = 'fas fa-compress-arrows-alt cursor-pointer';
-    shrinkIcon.style.fontSize = '20px'; // 调整图标大小
-    shrinkIcon.addEventListener('click', function() {
+    // 创建并配置图标容器
+    const iconContainer = document.createElement('div');
+    iconContainer.className = 'icon-container flex-shrink-0 ml-4 arrow';
+    iconContainer.addEventListener('click', function() {
         // 切换侧边栏大小的逻辑
         const frameHelper = document.getElementById('frameHelper');
         frameHelper.classList.toggle('expanded');
     });
+    // 创建缩放图标
+    // 使用Font Awesome图标
+    const shrinkIcon = document.createElement('i');
+    shrinkIcon.className = 'fas fa-angle-double-right text-gray-600 hover:text-gray-800 cursor-pointer';
+    shrinkIcon.style.fontSize = '1.25rem';
+    shrinkIcon.style.fontSize = '20px'; // 调整图标大小
 
-    fixedContentDiv.appendChild(shrinkIcon);
+    iconContainer.appendChild(shrinkIcon);
+
+    // 组装顶部容器
+    topContainer.appendChild(selectContainer);
+    topContainer.appendChild(iconContainer);
 
     // 动态内容区域
     const dynamicContentDiv = document.createElement('div');
