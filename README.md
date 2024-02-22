@@ -24,9 +24,43 @@ PromptFrameworks
 这里更新的逻辑是看文件里面的版本号，如果GitHub上的新，它就会更新github的
 
 # 使用界面
-![image](https://github.com/iaiuse/PromptFrameworksHelper/assets/160843322/21413f74-3bde-4298-a38b-1717c7d7dcba)
+右边有个浮动的小窗口，点击它就会出来，下拉框里面选择框架，最后会弄到输入框里面去
+![image](https://github.com/iaiuse/PromptFrameworksHelper/assets/160843322/16f6e47c-d223-4e2e-b50b-b5726c7b7804)
+
+比如切换一下
+![image](https://github.com/iaiuse/PromptFrameworksHelper/assets/160843322/f8b33f9e-4079-47ca-a071-a21bf82b138c)
 
 # 如何添加框架
+现在暂时采用的办法是在一个文件夹里面放了框架的结构，也就是下面这样的结构，跟着改就行了。详细的框架列表可以参考这篇文章
 
+[Prompt提示词没那么玄乎也就是个沟通方式——慢慢学AI004](https://www.iaiuse.com/posts/aa328ac0.html)
 
-这里的框架会不定期添加
+```
+{
+  "name": "ICIO框架",
+  "author": "Elavis Saravia",
+  "description": "非常适用于根据特定指令和相关背景信息生成输出的领域",
+  "fields":{
+    "Instruction": {
+      "text": "即你希望 AI 执行的具体任务"
+    },
+    "Context":{
+      "text": "给AI更多的背景信息引导模型做出更贴合需求的回复"
+    },
+    "InputData":{
+      "text": "告知模型需要处理的数据"
+    },
+    "OutputIndicator":{
+      "text": "告知模型我们要输出的类型或风格"
+    }
+  }
+}
+```
+后面空了再慢慢加吧
+
+# 优化想法
+这算是一个简单的提效工具，未必要用这些框架，比如说写小红书文案等等，涉及固定结构化的，都可以fork本库自己加就好了。
+
+那个下拉框最好也是动态的，这样的话，这个脚本本身不太需要动，只改git上的配置文件就可以了
+
+界面实在不擅长，只能先弄这么样
