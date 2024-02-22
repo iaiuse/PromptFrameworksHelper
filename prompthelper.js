@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         ChatGPT 框架助手
 // @namespace    http://tampermonkey.net/
-// @version      0.1
+// @version      0.9
 // @description  在ChatGPT页面侧边显示框架助手
 // @author       iaiuse.com
 // @match        https://chat.openai.com/*
