@@ -25,7 +25,8 @@ PromptFrameworks
 
 # 使用界面
 右边有个浮动的小窗口，点击它就会出来，下拉框里面选择框架，最后会弄到输入框里面去
-![image](https://github.com/iaiuse/PromptFrameworksHelper/assets/160843322/16f6e47c-d223-4e2e-b50b-b5726c7b7804)
+![image](https://github.com/iaiuse/PromptFrameworksHelper/assets/160843322/2c2ce9f7-3b39-4ec1-8a82-c769fbffb6ae)
+
 
 比如切换一下
 ![image](https://github.com/iaiuse/PromptFrameworksHelper/assets/160843322/f8b33f9e-4079-47ca-a071-a21bf82b138c)
