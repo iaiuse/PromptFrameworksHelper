@@ -12,15 +12,15 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
       
-      - name: Setup Node.js
+      - name: 设置 Node.js 环境
         uses: actions/setup-node@v2
         with:
           node-version: '14'
       
-      - name: Generate prompthelper.js
+      - name: 生成新的 prompthelper.js
         run: node scripts/generate-prompthelper.js
       
-      - name: Create Release
+      - name: 发布
         id: create_release
         uses: actions/create-release@v1
         env:
@@ -31,7 +31,7 @@ jobs:
           draft: false
           prerelease: false
       
-      - name: Upload Release Asset
+      - name: 上传文件
         uses: actions/upload-release-asset@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
