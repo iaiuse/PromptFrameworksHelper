@@ -19,6 +19,17 @@ jobs:
       
       - name: 生成新的 prompthelper.js
         run: node scripts/generate-prompthelper.js
+
+      - name: 基于时间戳推送新的tag
+        run: |
+          TIMESTAMP=`date +%Y%m%d%H%M%S`
+          echo "NEW_TAG_NAME=v$TIMESTAMP" >> $GITHUB_ENV
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git tag $NEW_TAG_NAME $(git rev-parse HEAD)
+          git push origin $NEW_TAG_NAME
+        env:
+          GITHUB_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
       
       - name: 发布
         id: create_release
