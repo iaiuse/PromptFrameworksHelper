@@ -10,6 +10,7 @@
 // @grant        GM_addStyle
 // @grant        GM_getResourceText
 // @require      https://code.jquery.com/jquery-3.7.1.min.js
+// ==/UserScript==
 
 (function() {  
     'use strict';
