@@ -150,16 +150,15 @@
 
     // 加载框架数据
     function loadFrameworkData(frameworkName) {
-        const url = `https://raw.githubusercontent.com/iaiuse/PromptFrameworksHelper/main/frameworks/${frameworkName}.json?ver=`+Math.random();
-
-        GM_xmlhttpRequest({
-            method: "GET",
-            url: url,
-            onload: function(response) {
-                const data = JSON.parse(response.responseText);
-                updateDynamicContent(data);
-            }
-        });
+        // 假设frameworks变量已经定义并包含所有框架数据
+        const data = frameworks.find(framework => Object.keys(framework)[0] === frameworkName);
+        
+        if (data) {
+            const frameworkData = data[frameworkName];
+            updateDynamicContent(frameworkData);
+        } else {
+            console.error('Framework data not found for:', frameworkName);
+        }
     }
 
     // 更新动态内容区域
