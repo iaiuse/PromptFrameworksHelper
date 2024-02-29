@@ -18,7 +18,7 @@ jobs:
           node-version: '14'
       
       - name: Generate prompthelper.js
-        run: node generate-prompthelper.js
+        run: node scripts/generate-prompthelper.js
       
       - name: Create Release
         id: create_release
