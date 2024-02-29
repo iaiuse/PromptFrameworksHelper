@@ -1,5 +1,29 @@
 # PromptFrameworksHelper
 
+# 20240229更新
+为了方便添加框架，也方便使用，把框架的格式改成yaml格式，另外通过github action把yaml的内容转成json，最终合并到主代码中，创建release
+```
+name: "BROKE"
+author: "陈财猫"
+description: 通过全局思维，整体框架来理解要解决的问题
+fields:
+  - Background:
+      text: 说明背景，为 ChatGPT 提供充足信息
+  - Role:
+      text: 我希望ChatGPT扮演的角色
+  - Objectives:
+      text: 我们希望实现什么
+  - KeyResult:
+      text: 我要什么具体效果试验并调整
+  - Evolve:
+      text: 试验并改进
+```
+好处是，加一个框架，它自动合并进去了
+
+![image](https://github.com/iaiuse/PromptFrameworksHelper/assets/160843322/b3b63371-7cab-4ef0-a25b-cd1011791e86)
+
+
+
 # 缘起
 用了很长一段时间gpt，学了一些框架确实有效果，但是每次写框架结构很头大。于是就想找用浏览器插件来实现。
 
