@@ -22,7 +22,7 @@ fields:
 
 ![image](https://github.com/iaiuse/PromptFrameworksHelper/assets/160843322/b3b63371-7cab-4ef0-a25b-cd1011791e86)
 
-
+更新后的安装部署方法，直接下载release里面的js文件，直接覆盖就可以了
 
 # 缘起
 用了很长一段时间gpt，学了一些框架确实有效果，但是每次写框架结构很头大。于是就想找用浏览器插件来实现。
