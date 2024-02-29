@@ -3,7 +3,7 @@ name: Release PromptHelper
 on:
   push:
     branches:
-      - master # 或你希望触发此工作流的分支
+      - main # 或你希望触发此工作流的分支
 
 jobs:
   build-and-release:
