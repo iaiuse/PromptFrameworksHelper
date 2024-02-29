@@ -34,19 +34,21 @@ jobs:
       - name: 发布
         id: create_release
         run: |
-          curl \
+          RESPONSE=$(curl \
           -X POST \
           -H "Authorization: token ${{ secrets.PERSONAL_ACCESS_TOKEN }}" \
           -H "Accept: application/vnd.github.v3+json" \
           https://api.github.com/repos/${{ github.repository }}/releases \
-          -d '{"tag_name":"${{ env.NEW_TAG_NAME }}", "name":"Release ${{ env.NEW_TAG_NAME }}", "body":"Release description here", "draft":false, "prerelease":false}'
+          -d '{"tag_name":"${{ env.NEW_TAG_NAME }}", "name":"Release ${{ env.NEW_TAG_NAME }}", "body":"Release description here", "draft":false, "prerelease":false}')
+          UPLOAD_URL=$(echo $RESPONSE | jq -r .upload_url | sed 's/{?name,label}//')
+          echo "UPLOAD_URL=$UPLOAD_URL" >> $GITHUB_ENV
           
       - name: 上传文件
         uses: actions/upload-release-asset@v1
         env:
           GITHUB_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
         with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          upload_url: ${{ env.UPLOAD_URL }}
           asset_path: ./prompthelper.js
           asset_name: prompthelper.js
           asset_content_type: application/javascript
