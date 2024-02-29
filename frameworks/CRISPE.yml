@@ -1,0 +1,14 @@
+name: "CRISPE"
+author: "Matt Nigh"
+description: 非常适用于根据特定指令和相关背景信息生成输出的领域
+fields:
+  - CapacityandRole:
+      text: ChatGPT 应扮演什么角色
+  - Insight:
+      text: 提供你请求的背后见解、背景和上下文
+  - Statement:
+      text: 你要求 ChatGPT 做什么
+  - Personality:
+      text: 你希望 ChatGPT 以何种风格、个性或方式回应
+  - Experiment:
+      text: 请求 ChatGPT 为你回复多个示例
