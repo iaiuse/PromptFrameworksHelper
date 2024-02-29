@@ -27,6 +27,9 @@ jobs:
         run: |
           TIMESTAMP=`date +%Y%m%d%H%M%S`
           echo "NEW_TAG_NAME=v$TIMESTAMP" >> $GITHUB_ENV
+          # 使用sed命令更新prompthelper.js中的版本信息
+          TAG_NAME="1.0.$TIMESTAMP"
+          sed -i "s/@version      [0-9.]*/@version      $TAG_NAME/" prompthelper.js
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
           git tag $NEW_TAG_NAME $(git rev-parse HEAD)
