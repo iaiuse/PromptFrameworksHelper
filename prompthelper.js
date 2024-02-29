@@ -198,15 +198,26 @@
 
     // 初始化下拉框选项
     function initSelectOptions() {
-        const frameworks = ['-请选择-','BROKE', 'ICIO']; // 示例：框架列表
+        // 添加默认选项
+        const defaultOption = document.createElement('option');
+        defaultOption.value = '';
+        defaultOption.textContent = '-请选择-';
+        selectElement.appendChild(defaultOption);
+    
+        // 遍历frameworks数组创建选项
         frameworks.forEach(framework => {
+            // 获取框架的键名和值
+            const key = Object.keys(framework)[0]; // 框架的键名（如"BROKE"）
+            const value = framework[key]; // 框架的值，包含name, author等
+    
+            // 创建选项
             const option = document.createElement('option');
-            option.value = framework;
-            option.textContent = framework;
+            option.value = key; // 选项的value是框架的键名
+            option.textContent = `${value.name}-${value.description}`; // 选项的文本是框架的名称和描述
             selectElement.appendChild(option);
         });
     }
-
+    
     // 提交表单的逻辑
     function submitForm(fields) {
         let prompt = "";
