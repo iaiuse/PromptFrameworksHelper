@@ -9,7 +9,7 @@ const frameworks = [];
 // Read each file in the frameworks directory
 fs.readdirSync(frameworksDir).forEach(file => {
   if (path.extname(file) === '.yml') {
-    const content = fs.readFileSync(path.join(frameworksDir, file), 'utf8');
+    const yamlContent = fs.readFileSync(path.join(frameworksDir, file), 'utf8');
     // 解析YAML内容
     const parsedYaml = yaml.load(yamlContent);
     // 转换YAML内容到期望的JSON结构
