@@ -11,7 +11,7 @@
 // @grant        GM_getResourceText
 // @require      https://code.jquery.com/jquery-3.7.1.min.js
 
-(function() { 
+(function() {  
     'use strict';
     // 动态添加Tailwind CSS
     const tailwindLink = document.createElement('link');
