@@ -136,6 +136,9 @@
 
     iconContainer.appendChild(shrinkIcon);
 
+    // START FRAMEWORKS
+    // END FRAMEWORKS
+
     // 组装顶部容器
     topContainer.appendChild(selectContainer);
     topContainer.appendChild(iconContainer);
