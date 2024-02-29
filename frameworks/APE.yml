@@ -1,0 +1,10 @@
+name: "APE"
+author: "不详"
+description: 简单粗暴
+fields:
+  - ACTION:
+      text: 定义要完成的工作或活动
+  - PURPOSE:
+      text: 讨论意图或目标
+  - EXPECTATION:
+      text: 陈述预期的结果
