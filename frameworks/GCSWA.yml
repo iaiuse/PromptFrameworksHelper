@@ -5,7 +5,7 @@ fields:
   - Role:
       text: 角色，如学术阅读
   - Profile:
-      text: 版本好，作者等信息
+      text: 版本号，作者等信息
   - Goals:
       text: 目标，如- 深入理解论文的主旨、关键思路和待解决问题。为你的读者提炼出最重要的关键信息。
   - Constrains:
