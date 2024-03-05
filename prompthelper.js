@@ -154,7 +154,7 @@
     function loadFrameworkData(frameworkName) {
         // 假设frameworks变量已经定义并包含所有框架数据
         const data = frameworks.find(framework => Object.keys(framework)[0] === frameworkName);
-        
+
         if (data) {
             const frameworkData = data[frameworkName];
             updateDynamicContent(frameworkData);
@@ -215,10 +215,17 @@
         // 提交按钮
         const submitButton = document.createElement('button');
         submitButton.textContent = '发送';
-        submitButton.className = 'bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded';
+        submitButton.className = 'bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded rounded-md';
         submitButton.onclick = () => submitForm(frameworkData.fields);
 
         dynamicContentDiv.appendChild(submitButton);
+
+        // 提交按钮
+        const copyButton = document.createElement('button');
+        copyButton.textContent = '复制';
+        copyButton.className = 'bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded';
+        copyButton.onclick = () => copyForm(frameworkData.fields);
+        dynamicContentDiv.appendChild(copyButton);
     }
 
     // 初始化下拉框选项
@@ -228,13 +235,13 @@
         defaultOption.value = '';
         defaultOption.textContent = '-请选择-';
         selectElement.appendChild(defaultOption);
-    
+
         // 遍历frameworks数组创建选项
         frameworks.forEach(framework => {
             // 获取框架的键名和值
             const key = Object.keys(framework)[0]; // 框架的键名（如"BROKE"）
             const value = framework[key]; // 框架的值，包含name, author等
-    
+
             // 创建选项
             const option = document.createElement('option');
             option.value = key; // 选项的value是框架的键名
@@ -242,15 +249,40 @@
             selectElement.appendChild(option);
         });
     }
-    
-    // 提交表单的逻辑
-    function submitForm(fields) {
+
+    // 获取内容
+    function getFormValue(fields) {
         let prompt = "";
-        Object.keys(fields).forEach(fieldName => {
+        fields.forEach(fieldObj => {
+            // 直接使用Object.entries获取键值对
+            Object.entries(fieldObj).forEach(([fieldName, field]) => {
+
             const input = document.querySelector(`textarea[name="${fieldName}"]`);
             prompt += `${fieldName}:\n${input.value}\n\n`;
-        });
+        })});
+        return prompt;
+    }
+
+    // 提交表单的逻辑
+    function submitForm(fields) {
+        let prompt = getFormValue(fields);
         $('#prompt-textarea').val(prompt);
+
+        // 这里应该将prompt发送给ChatGPT的输入框
+        console.log(prompt); // 示例：打印到控制台
+    }
+
+    // 提交表单的逻辑
+    function copyForm(fields) {
+        let prompt = getFormValue(fields);
+        // 使用navigator.clipboard API复制文本到剪贴板
+        navigator.clipboard.writeText(prompt).then(() => {
+            // 复制成功后的操作，比如显示一个提示
+            console.log('文本已复制到剪贴板');
+        }).catch(err => {
+            // 复制失败的操作
+            console.error('复制到剪贴板失败:', err);
+        });
 
         // 这里应该将prompt发送给ChatGPT的输入框
         console.log(prompt); // 示例：打印到控制台
@@ -268,4 +300,3 @@
         //this.innerText = '框架助手';
     });
 })();
-
