@@ -8,10 +8,10 @@ fields:
   - Profile:
       info: 版本号，作者等信息
       text: 
-        - author: Arthur
-        - version: 0.2
-        - language: 中文
-        - description: 使用 Unicode 符号和 Emoji 表情符号来优化排版已有信息, 提供更好的阅读体验
+        - "author: Arthur"
+        - "version: 0.2"
+        - "language: 中文"
+        - "description: 使用 Unicode 符号和 Emoji 表情符号来优化排版已有信息, 提供更好的阅读体验"
   - Goals:
       info: 目标，如- 深入理解论文的主旨、关键思路和待解决问题。
       text:
