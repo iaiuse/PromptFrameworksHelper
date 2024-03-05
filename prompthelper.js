@@ -5,6 +5,7 @@
 // @description  在ChatGPT页面侧边显示框架助手
 // @author       iaiuse.com
 // @match        https://chat.openai.com/*
+// @match        https://claude.ai/chat/*
 // @icon         https://www.iaiuse.com/img/avatar.png
 // @grant        GM_xmlhttpRequest
 // @grant        GM_addStyle
