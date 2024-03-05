@@ -174,11 +174,32 @@
         Object.entries(frameworkData.fields).forEach(([fieldName, field]) => {
             const fieldLabel = document.createElement('label');
             fieldLabel.className = 'block text-gray-700 text-sm font-bold mb-1';
-
             fieldLabel.textContent = fieldName + ": ";
+            if (field.info) {
+                // 添加info文本，用灰色文字表示
+                const infoText = document.createElement('span');
+                infoText.textContent = ` (${field.info})`;
+                infoText.style.color = 'grey';
+                fieldLabel.appendChild(infoText);
+            }
             const textarea = document.createElement('textarea');
             textarea.className = 'w-full p-1 border border-gray-300 rounded-md'; // Tailwind类
-            textarea.setAttribute('placeholder', field.text);
+
+            // 处理text，可能是数组也可能是字符串
+            let textContent = '';
+            if (Array.isArray(field.text)) {
+                textContent = field.text.map(textItem => {
+                  if (typeof textItem === 'string') {
+                    return textItem;
+                  } else if (typeof textItem === 'object') {
+                    return Object.values(textItem).join('\n');
+                  }
+                }).join('\n');
+              } else {
+                textContent = field.text;
+            }
+            
+            textarea.setAttribute('placeholder', textContent);
             textarea.setAttribute('name', fieldName);
 
             dynamicContentDiv.appendChild(fieldLabel);
