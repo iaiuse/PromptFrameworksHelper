@@ -6,6 +6,9 @@
 // @author       iaiuse.com
 // @match        https://chat.openai.com/*
 // @match        https://claude.ai/chat/*
+// @match        https://aistudio.google.com/*
+// @match        https://chatglm.cn/main/*
+// @match        https://kimi.moonshot.cn/*
 // @icon         https://www.iaiuse.com/img/avatar.png
 // @grant        GM_xmlhttpRequest
 // @grant        GM_addStyle
