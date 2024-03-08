@@ -9,6 +9,7 @@
 // @match        https://aistudio.google.com/*
 // @match        https://chatglm.cn/main/*
 // @match        https://kimi.moonshot.cn/*
+// @match       https://gemini.google.com/*
 // @icon         https://www.iaiuse.com/img/avatar.png
 // @grant        GM_xmlhttpRequest
 // @grant        GM_addStyle
